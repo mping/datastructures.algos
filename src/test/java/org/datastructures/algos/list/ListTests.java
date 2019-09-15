@@ -48,7 +48,7 @@ public class ListTests {
 
         assertEquals("first", impl.get(0));
         assertEquals("third", impl.get(1));
-        assertEquals(2, impl.count());
+        assertEquals(2, impl.size());
     }
 
     @Test
@@ -74,13 +74,13 @@ public class ListTests {
 
     @Test
     public void testEmptySize() {
-        assertEquals(0, impl.count());
+        assertEquals(0, impl.size());
     }
 
     @Test
     public void testSize1El() {
         impl.add("one");
-        assertEquals(1, impl.count());
+        assertEquals(1, impl.size());
     }
 
     @Test

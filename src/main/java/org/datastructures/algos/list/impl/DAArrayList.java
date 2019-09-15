@@ -45,9 +45,9 @@ public class DAArrayList implements DAList {
     }
 
     @Override
-    public int find(Object needle) {
+    public int find(Object element) {
         for (int i = 0; i < size; i++) {
-            if (array[i] == needle) {
+            if (array[i] == element) {
                 return i;
             }
         }
@@ -55,13 +55,8 @@ public class DAArrayList implements DAList {
     }
 
     @Override
-    public int count() {
+    public int size() {
         return size;
     }
 
-
-    @Override
-    public void reverse() {
-
-    }
 }

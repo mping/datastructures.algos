@@ -25,19 +25,14 @@ public interface DAList {
 
     /**
      * Find an object's position. Zero-based.
-     * @param needle the object to find
+     * @param element the object to find
      * @return the position, or -1 if the object does not exist
      */
-    int find(Object needle);
+    int find(Object element);
 
     /**
      * Gets the size of the list.
      * @return the size
      */
-    int count();
-
-    /**
-     * Reverses the list in-place.
-     */
-    void reverse();
+    int size();
 }

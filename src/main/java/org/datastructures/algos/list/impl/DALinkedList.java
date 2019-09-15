@@ -74,13 +74,13 @@ public class DALinkedList implements DAList {
     }
 
     @Override
-    public int find(Object needle) {
+    public int find(Object element) {
         if (size == 0) {
             return -1;
         }
         Node curr = root;
         for (int i = 0; i < size; i++) {
-            if (curr.val.equals(needle)) {
+            if (curr.val.equals(element)) {
                 return i;
             }
             curr = curr.next;
@@ -89,12 +89,8 @@ public class DALinkedList implements DAList {
     }
 
     @Override
-    public int count() {
+    public int size() {
         return size;
     }
 
-    @Override
-    public void reverse() {
-
-    }
 }
