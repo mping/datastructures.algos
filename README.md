@@ -6,7 +6,7 @@ through unit testing.
 
 The implementation is provided is Java, but some things are left out:
 
-* Collections don't implement `java.utl.*` interfaces to keep it simple
+* Collections don't implement `java.util.*` interfaces to keep it simple
  * eg: iterators are left out, `isEmpty()`, etc
 * Generics are not used to keep it simple
 * Ideally, Big-O notation would be *inferred* through benchmarking but that part isn't implemented yet. PRs welcome
@@ -18,3 +18,8 @@ Just delete all code within the `org.datastructures.algos.*.impl.*` classes and 
 All unit tests should pass.
 
 Check the `README.md` on each package to see how it is supposed to work.
+
+# Contribute
+
+Open an issue/PR with any kind suggestion or comment and I will look into it.
+Code, typos, spelling, copy or any other suggestions are welcome.
