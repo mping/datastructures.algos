@@ -26,8 +26,15 @@ public class MapTests {
   private DAMap impl;
 
   @Test
-  public void testEmptyMap() {
+  public void testEmptyMapSize() {
     assertEquals(0, impl.size());
+  }
+
+  @Test
+  public void testMapSize() {
+    impl.put("foo", "bar");
+    impl.put("quux", "quuz");
+    assertEquals(2, impl.size());
   }
 
   @Test
@@ -50,6 +57,11 @@ public class MapTests {
     assertEquals(true, impl.containsValue("value"));
     assertEquals("value", impl.get("key"));
   }
+  @Test
+  public void testGet1Elem() {
+    impl.put("key", "value");
+    assertEquals("value", impl.get("key"));
+  }
 
   @Test
   public void testRemove1Elem() {
@@ -58,6 +70,7 @@ public class MapTests {
 
     assertEquals(true, impl.remove("foo"));
     assertEquals(false, impl.containsKey("foo"));
+    assertEquals(true, impl.containsKey("quux"));
   }
 
 }
