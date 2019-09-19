@@ -23,3 +23,28 @@ Check the `README.md` on each package to see how it is supposed to work.
 
 Open an issue/PR with any kind suggestion or comment and I will look into it.
 Code, typos, spelling, copy or any other suggestions are welcome.
+
+# TODO
+
+ - [x] Lists 
+    - [x] Linked List
+    - [x] Array List
+    - [ ] Persistent Lists
+    - [ ] Sorting algorithms
+ - [x] Sets 
+ - [ ] Maps
+    - [ ] HashMap
+      - [X] Chained
+      - [ ] Open addressing
+    - [ ] Persistent Maps via HAMTs
+ - [ ] Stack
+ - [ ] Queue
+    - [ ] Priority Queue
+ - [ ] Tree 
+    - [ ] Binary Tree 
+    - [ ] Red/black, AVL, etc 
+    - [ ] B-Tree 
+    - [ ] Traversal algorithms
+ - [ ] 
+ - [ ] Benchmarks!
+   
