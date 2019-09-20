@@ -2,37 +2,42 @@ package org.datastructures.algos.list;
 
 public interface DAList {
 
-    /**
-     * Add an element.
-     * @param element the element to add
-     */
-    void add(Object element);
+  /**
+   * Add an element.
+   *
+   * @param element the element to add
+   */
+  void add(Object element);
 
-    /**
-     * Remove an element.
-     * @param element he element to remove
-     * @return true if the element was successfully removed
-     */
-    boolean remove(Object element);
+  /**
+   * Remove an element.
+   *
+   * @param element he element to remove
+   * @return true if the element was successfully removed
+   */
+  boolean remove(Object element);
 
-    /**
-     * Get the object at a given position. Zero-based.
-     * @param position the position
-     * @return the object
-     * @throws IndexOutOfBoundsException if the position is out of bounds
-     */
-    Object get(int position) throws IndexOutOfBoundsException;
+  /**
+   * Get the object at a given position. Zero-based.
+   *
+   * @param position the position
+   * @return the object
+   * @throws IndexOutOfBoundsException if the position is out of bounds
+   */
+  Object get(int position) throws IndexOutOfBoundsException;
 
-    /**
-     * Find an object's position. Zero-based.
-     * @param element the object to find
-     * @return the position, or -1 if the object does not exist
-     */
-    int find(Object element);
+  /**
+   * Find an object's position. Zero-based.
+   *
+   * @param element the object to find
+   * @return the position, or -1 if the object does not exist
+   */
+  int find(Object element);
 
-    /**
-     * Gets the size of the list.
-     * @return the size
-     */
-    int size();
+  /**
+   * Gets the size of the list.
+   *
+   * @return the size
+   */
+  int size();
 }
