@@ -78,6 +78,13 @@ public class MapTests {
     assertEquals(true, impl.containsValue("value"));
     assertEquals("value", impl.get("key"));
   }
+  @Test
+  public void testOverwrite() {
+    impl.put("key", "value");
+    impl.put("key", "otherValue");
+
+    assertEquals("otherValue", impl.get("key"));
+  }
 
   /**
    * Get tests

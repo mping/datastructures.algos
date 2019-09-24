@@ -46,20 +46,31 @@ public class DAChainedHashMap implements DAMap {
 
   @Override
   public void put(Object key, Object value) {
-    MapEntry mapEntry = new MapEntry();
-    mapEntry.key = key;
-    mapEntry.value = value;
-    mapEntry.hash = Math.abs(key.hashCode());
-
-    int index = bucketIndex(mapEntry.hash);
+    int hash = Math.abs(key.hashCode());
+    int index = bucketIndex(hash);
 
     if (buckets[index] == null) {
+      MapEntry mapEntry = new MapEntry();
+      mapEntry.key = key;
+      mapEntry.value = value;
+      mapEntry.hash = hash;
       buckets[index] = mapEntry;
     } else {
-      // here we add the map entry to the head of the linked map entries, but we could have added it to the end
+      MapEntry prev = null;
       MapEntry curr = buckets[index];
-      buckets[index] = mapEntry;
-      mapEntry.next = curr;
+      while (curr != null && !curr.key.equals(key)) {
+        prev = curr;
+        curr = curr.next;
+      }
+      if (curr == null) {
+        MapEntry mapEntry = new MapEntry();
+        mapEntry.key = key;
+        mapEntry.value = value;
+        mapEntry.hash = hash;
+        prev.next = mapEntry;
+      } else {
+        curr.value = value;
+      }
     }
     size++;
   }
