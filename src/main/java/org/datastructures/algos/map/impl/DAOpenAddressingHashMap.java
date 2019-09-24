@@ -4,11 +4,12 @@ import org.datastructures.algos.map.DAMap;
 
 public class DAOpenAddressingHashMap implements DAMap {
 
-  MapEntry[] buckets;
-  int size;
+  private int initialSize = 16;
+  private MapEntry[] buckets;
+  private int size;
 
   public DAOpenAddressingHashMap() {
-    this.buckets = new MapEntry[16];
+    this.buckets = new MapEntry[initialSize];
     this.size = 0;
   }
 
@@ -78,17 +79,22 @@ public class DAOpenAddressingHashMap implements DAMap {
   public boolean remove(Object key) {
     // find position i of key
     int i = bucketIndex(key.hashCode());
-    while (!key.equals(buckets[i].key)) {
+    while (buckets[i] != null && !key.equals(buckets[i].key)) {
       i = (i + 1) % buckets.length;
     }
     //delete
-    buckets[i] = null;
+    boolean found = false;
+    if (buckets[i] != null) {
+      buckets[i] = null;
+      size--;
+      found = true;
+    }
 
-    if ((size / (float) buckets.length) < 0.125f) {
+    if (buckets.length != initialSize && (size / (float) buckets.length) < 0.125f) {
       // will actually become 50% full after downsizing
       resize(size / 2);
     }
-    return false;
+    return found;
   }
 
   @Override
@@ -98,11 +104,23 @@ public class DAOpenAddressingHashMap implements DAMap {
 
   @Override
   public boolean containsKey(Object key) {
+    int index = bucketIndex(key.hashCode());
+    int i;
+    for (i = index; buckets[i] != null; i = (i + 1) % buckets.length) {
+      if (buckets[i].key.equals(key)) {
+        return true;
+      }
+    }
     return false;
   }
 
   @Override
   public boolean containsValue(Object value) {
+    for (int i = 0; i < buckets.length; i++) {
+      if (buckets[i] != null && buckets[i].value.equals(value)) {
+        return true;
+      }
+    }
     return false;
   }
 

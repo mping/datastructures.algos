@@ -4,6 +4,7 @@ import org.datastructures.algos.map.DAMap;
 
 public class DAChainedHashMap implements DAMap {
 
+  private int initialSize = 16;
   private MapEntry[] buckets;
   private int size;
 
@@ -14,7 +15,7 @@ public class DAChainedHashMap implements DAMap {
     // if the initial table is large, there can be lots of empty rows
     // production-grade (ie, real) hash maps keep track of the percentage of rows that are "full"
     // and are able to resize the internal table dynamically
-    buckets = new MapEntry[16];
+    buckets = new MapEntry[initialSize];
   }
 
   @Override
@@ -33,6 +34,21 @@ public class DAChainedHashMap implements DAMap {
     return false;
   }
 
+  private void resize(int newSize) {
+    MapEntry[] newBuckets = new MapEntry[newSize];
+    for (int i = 0; i < buckets.length; i++) {
+      if (buckets[i] != null) {
+        MapEntry entry = buckets[i];
+        while (entry != null) {
+          // reuse the hash
+          int index = entry.hash % newBuckets.length;
+          newBuckets[index] = entry;
+          entry = entry.next;
+        }
+      }
+    }
+  }
+
   /**
    * Given a hash, calculate its index on the buckets table
    *
@@ -48,6 +64,10 @@ public class DAChainedHashMap implements DAMap {
   public void put(Object key, Object value) {
     int hash = Math.abs(key.hashCode());
     int index = bucketIndex(hash);
+
+    if (size / (float) buckets.length > 0.75f) {
+      resize(buckets.length * 2);
+    }
 
     if (buckets[index] == null) {
       MapEntry mapEntry = new MapEntry();
@@ -94,6 +114,7 @@ public class DAChainedHashMap implements DAMap {
   public boolean remove(Object key) {
     int hash = Math.abs(key.hashCode());
     int index = bucketIndex(hash);
+    boolean found = false;
 
     MapEntry entry = buckets[index];
     MapEntry prev = null;
@@ -105,11 +126,16 @@ public class DAChainedHashMap implements DAMap {
           prev.next = entry.next;
         }
         size--;
-        return true;
+        found = true;
+        break;
       }
     }
 
-    return false;
+    if (buckets.length != initialSize && size / (float) buckets.length < 0.125f) {
+      resize(buckets.length / 2);
+    }
+
+    return found;
   }
 
   @Override
