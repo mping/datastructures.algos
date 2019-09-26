@@ -33,9 +33,9 @@ Code, typos, spelling, copy or any other suggestions are welcome.
     - [ ] Sorting algorithms
  - [x] Sets 
  - [ ] Maps
-    - [ ] HashMap
-      - [X] Chained
-      - [ ] Open addressing
+    - [x] HashMap
+      - [x] Chained
+      - [x] Open addressing
     - [ ] Persistent Maps via HAMTs
  - [ ] Stack
  - [ ] Queue
@@ -45,6 +45,5 @@ Code, typos, spelling, copy or any other suggestions are welcome.
     - [ ] Red/black, AVL, etc 
     - [ ] B-Tree 
     - [ ] Traversal algorithms
- - [ ] 
  - [ ] Benchmarks!
    
