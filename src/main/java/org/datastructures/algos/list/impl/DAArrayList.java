@@ -19,7 +19,7 @@ public class DAArrayList implements DAList {
   public void add(Object element) {
     // if we reached the limit, grow the array
     if (array.length == size + 1) {
-      array = Arrays.copyOf(array, array.length * 2);
+        array = Arrays.copyOf(array, array.length * 2);
     }
     array[size] = element;
     size++;

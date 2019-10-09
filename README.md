@@ -37,7 +37,7 @@ Code, typos, spelling, copy or any other suggestions are welcome.
       - [x] Chained
       - [x] Open addressing
     - [ ] Persistent Maps via HAMTs
- - [ ] Stack
+ - [x] Stack
  - [ ] Queue
     - [ ] Priority Queue
  - [ ] Tree 
@@ -45,5 +45,5 @@ Code, typos, spelling, copy or any other suggestions are welcome.
     - [ ] Red/black, AVL, etc 
     - [ ] B-Tree 
     - [ ] Traversal algorithms
- - [ ] Benchmarks!
+ - [ ] Benchmarks (WIP)
    

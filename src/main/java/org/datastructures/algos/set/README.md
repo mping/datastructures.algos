@@ -11,4 +11,4 @@ It should be simple to implement a set via a list. The only special consideratio
 
 ## Hash based set
 
-Uses a hash function to keep track of duplicates.
+Uses a hash function to keep track of duplicates. Can be implemented with a `HashMap`
