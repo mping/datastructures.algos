@@ -8,8 +8,9 @@ The implementation is provided is Java, but some things are left out:
 
 * Collections don't implement `java.util.*` interfaces to keep it simple
  * eg: iterators are left out, `isEmpty()`, etc
+* Performance is not relevant for **naive** implementations. If time allows we will delve deep into performance
 * Generics are not used to keep it simple
-* Ideally, Big-O notation would be *inferred* through benchmarking but that part isn't implemented yet. PRs welcome
+* Ideally, Big-O notation would be **inferred** through benchmarking but that part isn't implemented yet. PRs welcome
 
 
 # How?
@@ -22,7 +23,7 @@ Check the `README.md` on each package to see how it is supposed to work.
 # Contribute
 
 Open an issue/PR with any kind suggestion or comment and I will look into it.
-Code, typos, spelling, copy or any other suggestions are welcome.
+Code, typos, unit tests, spelling, copy or any other suggestions are welcome.
 
 # TODO
 
@@ -38,7 +39,7 @@ Code, typos, spelling, copy or any other suggestions are welcome.
       - [x] Open addressing
     - [ ] Persistent Maps via HAMTs
  - [x] Stack
- - [ ] Queue
+ - [x] Queue
     - [ ] Priority Queue
  - [ ] Tree 
     - [ ] Binary Tree 

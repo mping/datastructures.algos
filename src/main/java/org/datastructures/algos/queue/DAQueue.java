@@ -19,4 +19,10 @@ public interface DAQueue {
    * @return
    */
   Object peek();
+
+  /**
+   * Gets the number of elements
+   * @return
+   */
+  int size();
 }
