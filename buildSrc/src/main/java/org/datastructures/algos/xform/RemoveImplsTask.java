@@ -18,12 +18,18 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class RemoveImplsTask extends DefaultTask {
 
   @TaskAction
   public void greet() throws IOException {
     String rootDir = "src/main/java";
+    System.out.printf("This task removes all implementation under '%s' so you can provide your own impl." +
+        "Press \"ENTER\" to continue, CTRL+C to quit:\n", rootDir);
+    Scanner scanner = new Scanner(System.in);
+    scanner.nextLine();
+
 
     Files.walk(Paths.get(rootDir))
         .filter(f -> f.toFile().getParent().endsWith("impl"))

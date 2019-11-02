@@ -15,8 +15,10 @@ The implementation is provided is Java, but some things are left out:
 
 # How?
 
-Just delete all code within the `org.datastructures.algos.*.impl.*` classes and implement your own.
-All unit tests should pass.
+All the tests should pass by running `./gradlew test`.
+
+If you want to try your own implementation, run `./gradlew -q removeImpls` to delete all code 
+within the `org.datastructures.algos.*.impl.*` classes. Implement your own and make sure the tests pass.
 
 Check the `README.md` on each package to see how it is supposed to work.
 
