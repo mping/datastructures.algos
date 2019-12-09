@@ -11,7 +11,10 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 import org.openjdk.jmh.runner.options.VerboseMode;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -80,18 +83,25 @@ public class ListBenchmarks {
 
     DALinkedList daLinkedList;
     DAArrayList daArrayList;
+    Random rand;
 
     @Setup(Level.Iteration)
     public void setup() {
-      ELEMENTS = getRandomValues(CONTAINER_SIZE, 0);
+      rand = new Random(0);
+      ELEMENTS = getRandomValues(CONTAINER_SIZE, rand);
 
       daLinkedList = new DALinkedList();
       daArrayList = new DAArrayList();
+
+      for (Integer i : ELEMENTS) {
+        daLinkedList.add(i);
+        daArrayList.add(i);
+      }
     }
   }
 
-  public static Integer[] getRandomValues(int size, int seed) {
-    return getRandomValues(size, false, new Random(seed));
+  public static Integer[] getRandomValues(int size, Random rand) {
+    return getRandomValues(size, false, rand);
   }
 
   public static Integer[] getRandomValues(int size, boolean nonNegative, Random random) {
@@ -106,17 +116,13 @@ public class ListBenchmarks {
   public static class Insert extends Base {
     @Benchmark
     public Object linkedList() {
-      for (Integer i : ELEMENTS) {
-        daLinkedList.add(i);
-      }
+      daLinkedList.add(rand.nextInt());
       return daLinkedList;
     }
 
     @Benchmark
     public Object arrayList() {
-      for (Integer i : ELEMENTS) {
-        daArrayList.add(i);
-      }
+      daArrayList.add(rand.nextInt());
       return daArrayList;
     }
   }
